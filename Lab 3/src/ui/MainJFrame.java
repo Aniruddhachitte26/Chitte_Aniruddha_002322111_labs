@@ -3,18 +3,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui;
+import model.Account;
+import model.AccountDirectory;
 
 /**
  *
  * @author Aniruddha
  */
 public class MainJFrame extends javax.swing.JFrame {
+    
+    private AccountDirectory accountDirectory;
 
     /**
      * Creates new form MainJFrame
      */
     public MainJFrame() {
         initComponents();
+        
+        this.accountDirectory = new AccountDirectory();
+        generateDemoData();
+        
     }
 
     /**
@@ -56,17 +64,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         splitPane.setTopComponent(topJPanel);
 
-        javax.swing.GroupLayout userProcessContainerLayout = new javax.swing.GroupLayout(userProcessContainer);
-        userProcessContainer.setLayout(userProcessContainerLayout);
-        userProcessContainerLayout.setHorizontalGroup(
-            userProcessContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 724, Short.MAX_VALUE)
-        );
-        userProcessContainerLayout.setVerticalGroup(
-            userProcessContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 396, Short.MAX_VALUE)
-        );
-
+        userProcessContainer.setLayout(new java.awt.CardLayout());
         splitPane.setRightComponent(userProcessContainer);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -124,4 +122,36 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel topJPanel;
     private javax.swing.JPanel userProcessContainer;
     // End of variables declaration//GEN-END:variables
+    
+    private void generateDemoData(){
+        
+        Account newAccount = accountDirectory.addAccount();
+        newAccount.setAccountNumber("4444444444");
+        newAccount.setRountingNumber("0011223344");
+        newAccount.setBankName("Bank of America");
+        newAccount.setBalance(200);
+        
+        Account anotherNewAccount = accountDirectory.addAccount();
+        anotherNewAccount.setAccountNumber("5555555555");
+        anotherNewAccount.setRountingNumber("..77112234");
+        anotherNewAccount.setBankName("Santander Bank");
+        anotherNewAccount.setBalance(1200);
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
