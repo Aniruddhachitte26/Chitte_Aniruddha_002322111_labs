@@ -26,17 +26,58 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        splitPane = new javax.swing.JSplitPane();
+        topJPanel = new javax.swing.JPanel();
+        btnAccountMng = new javax.swing.JButton();
+        userProcessContainer = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        splitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+
+        btnAccountMng.setText("Open Account Manager Work Area");
+
+        javax.swing.GroupLayout topJPanelLayout = new javax.swing.GroupLayout(topJPanel);
+        topJPanel.setLayout(topJPanelLayout);
+        topJPanelLayout.setHorizontalGroup(
+            topJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(topJPanelLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(btnAccountMng)
+                .addContainerGap(483, Short.MAX_VALUE))
+        );
+        topJPanelLayout.setVerticalGroup(
+            topJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topJPanelLayout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addComponent(btnAccountMng)
+                .addGap(16, 16, 16))
+        );
+
+        splitPane.setTopComponent(topJPanel);
+
+        javax.swing.GroupLayout userProcessContainerLayout = new javax.swing.GroupLayout(userProcessContainer);
+        userProcessContainer.setLayout(userProcessContainerLayout);
+        userProcessContainerLayout.setHorizontalGroup(
+            userProcessContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 724, Short.MAX_VALUE)
+        );
+        userProcessContainerLayout.setVerticalGroup(
+            userProcessContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 396, Short.MAX_VALUE)
+        );
+
+        splitPane.setRightComponent(userProcessContainer);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(splitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 724, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(splitPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -78,5 +119,9 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAccountMng;
+    private javax.swing.JSplitPane splitPane;
+    private javax.swing.JPanel topJPanel;
+    private javax.swing.JPanel userProcessContainer;
     // End of variables declaration//GEN-END:variables
 }
