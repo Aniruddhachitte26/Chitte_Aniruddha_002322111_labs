@@ -26,19 +26,108 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnUpdate = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
+        tlbTitle = new javax.swing.JLabel();
+        txtAccountNumber = new javax.swing.JTextField();
+        txtBankName = new javax.swing.JTextField();
+        lblRoutingNumber = new javax.swing.JLabel();
+        lblBankName = new javax.swing.JLabel();
+        txtRoutingNumber = new javax.swing.JTextField();
+        lblAccountNumber = new javax.swing.JLabel();
+        btnSave = new javax.swing.JButton();
+
+        btnUpdate.setText("Update");
+
+        btnBack.setText("<<<<Back");
+
+        tlbTitle.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tlbTitle.setText("View Account");
+
+        lblRoutingNumber.setText("Routing Number");
+
+        lblBankName.setText("Bank Name");
+
+        lblAccountNumber.setText("Account Number");
+
+        btnSave.setText("Save");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblRoutingNumber)
+                        .addGap(41, 41, 41)
+                        .addComponent(txtRoutingNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblBankName)
+                            .addGap(41, 41, 41)
+                            .addComponent(txtBankName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblAccountNumber)
+                            .addGap(41, 41, 41)
+                            .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(210, 210, 210))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack)
+                        .addGap(250, 250, 250)
+                        .addComponent(tlbTitle))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(316, 316, 316)
+                        .addComponent(btnSave)
+                        .addGap(32, 32, 32)
+                        .addComponent(btnUpdate)))
+                .addContainerGap(263, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblAccountNumber, lblBankName, lblRoutingNumber});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack)
+                    .addComponent(tlbTitle))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblRoutingNumber)
+                    .addComponent(txtRoutingNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAccountNumber)
+                    .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblBankName)
+                    .addComponent(txtBankName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSave)
+                    .addComponent(btnUpdate))
+                .addContainerGap(263, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnUpdate;
+    private javax.swing.JLabel lblAccountNumber;
+    private javax.swing.JLabel lblBankName;
+    private javax.swing.JLabel lblRoutingNumber;
+    private javax.swing.JLabel tlbTitle;
+    private javax.swing.JTextField txtAccountNumber;
+    private javax.swing.JTextField txtBankName;
+    private javax.swing.JTextField txtRoutingNumber;
     // End of variables declaration//GEN-END:variables
 }
