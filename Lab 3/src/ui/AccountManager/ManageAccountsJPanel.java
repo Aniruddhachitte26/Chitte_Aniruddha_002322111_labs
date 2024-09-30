@@ -4,17 +4,31 @@
  */
 package ui.AccountManager;
 
+import java.awt.CardLayout;
+import static java.lang.System.in;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import model.Account;
+import model.AccountDirectory;
+
 /**
  *
- * @author Aniruddha
+ * @author Microsoft
  */
 public class ManageAccountsJPanel extends javax.swing.JPanel {
+    JPanel userProcessContainer;
+    AccountDirectory accountDirectory;
 
     /**
      * Creates new form ManageAccountsJPanel
      */
-    public ManageAccountsJPanel() {
+    public ManageAccountsJPanel(JPanel container, AccountDirectory directoory) {
         initComponents();
+        userProcessContainer = container;
+        accountDirectory = directoory;
+        
+        populateTable();
     }
 
     /**
@@ -54,10 +68,25 @@ public class ManageAccountsJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblAccounts);
 
         btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         btnViewDetails.setText("View Details");
+        btnViewDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewDetailsActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete Account");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -75,12 +104,12 @@ public class ManageAccountsJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnSearch)
-                                .addGap(47, 47, 47)
-                                .addComponent(txtSearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(58, 58, 58)
+                                .addComponent(txtSearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnViewDetails)
-                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(58, Short.MAX_VALUE))
+                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDelete, btnSearch, btnViewDetails});
@@ -93,8 +122,8 @@ public class ManageAccountsJPanel extends javax.swing.JPanel {
                     .addComponent(btnBack)
                     .addComponent(lblTitle))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearch)
                     .addComponent(txtSearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -102,9 +131,76 @@ public class ManageAccountsJPanel extends javax.swing.JPanel {
                 .addComponent(btnViewDetails)
                 .addGap(18, 18, 18)
                 .addComponent(btnDelete)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblAccounts.getSelectedRow();
+        
+        if (selectedRow>=0){
+        
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(null,"Are you sure you want to delete the selected account", "Warning", JOptionPane.WARNING_MESSAGE);
+            if (dialogResult == JOptionPane.YES_OPTION){
+            
+                Account selectedAccount = (Account) tblAccounts.getValueAt(selectedRow, 0);
+                accountDirectory.deleteAccount(selectedAccount);
+                populateTable();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Please select an account from the list", "Warning", JOptionPane.WARNING_MESSAGE);
+                
+            }
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblAccounts.getSelectedRow();
+        
+        if (selectedRow>=0){
+            
+            Account selectedAccount = (Account) tblAccounts.getValueAt(selectedRow, 0);
+                    
+            ViewAccountJPanel panel= new ViewAccountJPanel(userProcessContainer, accountDirectory, selectedAccount);
+            userProcessContainer.add("ViewAccountJPanel", panel);
+            CardLayout layout=(CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        
+            //Beyond this point code will execute after you go back to this panel
+        }else{
+            JOptionPane.showMessageDialog(null, "Please select an account from the list to view", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnViewDetailsActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        if (!txtSearchBox.getText().isBlank()){
+            String accountNumber= txtSearchBox.getText();
+            Account foundAccount= accountDirectory.searchAccount(accountNumber);
+            
+            if (foundAccount!=null){
+                ViewAccountJPanel panel = new ViewAccountJPanel(userProcessContainer,accountDirectory,foundAccount);
+                userProcessContainer.add("ViewAccountJPanel", panel);
+                CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+            }else{
+                JOptionPane.showMessageDialog(null, "Account not found.", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Please type the account number to view", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -117,4 +213,22 @@ public class ManageAccountsJPanel extends javax.swing.JPanel {
     private javax.swing.JTable tblAccounts;
     private javax.swing.JTextField txtSearchBox;
     // End of variables declaration//GEN-END:variables
+
+    public void populateTable(){
+    
+        DefaultTableModel model = (DefaultTableModel) tblAccounts.getModel();
+        model.setRowCount(0);
+        
+        for (Account a: accountDirectory.getAccounts()){
+            
+            Object[] row = new Object[4];
+            row[0] = a;
+            row[1] = a.getRoutingNumber();
+            row[2] = a.getAccountNumber();
+            row[3] = String.valueOf(a.getBalance());
+            
+            model.addRow(row);
+        }
+    }
+
 }

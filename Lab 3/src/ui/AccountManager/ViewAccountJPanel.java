@@ -4,17 +4,33 @@
  */
 package ui.AccountManager;
 
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import model.Account;
+import model.AccountDirectory;
+
 /**
  *
- * @author Aniruddha
+ * @author Microsoft
  */
 public class ViewAccountJPanel extends javax.swing.JPanel {
+    private JPanel userProcessContainer;
+    private AccountDirectory accountDirectory;
+    private Account account;
 
     /**
      * Creates new form ViewAccountJPanel
      */
-    public ViewAccountJPanel() {
+    public ViewAccountJPanel(JPanel container, AccountDirectory directory, Account account) {
         initComponents();
+        userProcessContainer = container;
+        accountDirectory = directory;
+        this.account = account;
+        
+        refreshTextFields();
+        setViewmode();
     }
 
     /**
@@ -26,96 +42,154 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnUpdate = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        tlbTitle = new javax.swing.JLabel();
+        txtRoutingNumber = new javax.swing.JTextField();
+        lblRoutingNumber = new javax.swing.JLabel();
+        lblAccountNumber = new javax.swing.JLabel();
         txtAccountNumber = new javax.swing.JTextField();
         txtBankName = new javax.swing.JTextField();
-        lblRoutingNumber = new javax.swing.JLabel();
         lblBankName = new javax.swing.JLabel();
-        txtRoutingNumber = new javax.swing.JTextField();
-        lblAccountNumber = new javax.swing.JLabel();
+        txtBalance = new javax.swing.JTextField();
+        lblBalance = new javax.swing.JLabel();
+        lblView = new javax.swing.JLabel();
         btnSave = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
 
-        btnUpdate.setText("Update");
-
-        btnBack.setText("<<<<Back");
-
-        tlbTitle.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tlbTitle.setText("View Account");
+        btnBack.setText("<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         lblRoutingNumber.setText("Routing Number");
 
-        lblBankName.setText("Bank Name");
-
         lblAccountNumber.setText("Account Number");
 
+        lblBankName.setText("Bank Name");
+
+        lblBalance.setText("Balance");
+
+        lblView.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblView.setText("View Account");
+
         btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblRoutingNumber)
-                        .addGap(41, 41, 41)
-                        .addComponent(txtRoutingNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblBankName)
-                            .addGap(41, 41, 41)
-                            .addComponent(txtBankName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblAccountNumber)
-                            .addGap(41, 41, 41)
-                            .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(210, 210, 210))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnBack)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnBack)
-                        .addGap(250, 250, 250)
-                        .addComponent(tlbTitle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(316, 316, 316)
-                        .addComponent(btnSave)
-                        .addGap(32, 32, 32)
-                        .addComponent(btnUpdate)))
-                .addContainerGap(263, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblBalance)
+                                    .addComponent(lblBankName)
+                                    .addComponent(lblAccountNumber)
+                                    .addComponent(lblRoutingNumber))
+                                .addGap(72, 72, 72)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtRoutingNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAccountNumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtBankName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtBalance, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSave)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnUpdate))))
+                    .addComponent(lblView, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(214, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblAccountNumber, lblBankName, lblRoutingNumber});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtAccountNumber, txtBalance, txtBankName, txtRoutingNumber});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(tlbTitle))
-                .addGap(30, 30, 30)
+                    .addComponent(lblView)
+                    .addComponent(btnBack))
+                .addGap(93, 93, 93)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRoutingNumber)
-                    .addComponent(txtRoutingNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRoutingNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRoutingNumber))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAccountNumber))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAccountNumber)
-                    .addComponent(txtAccountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBankName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBankName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBankName)
-                    .addComponent(txtBankName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                    .addComponent(txtBalance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBalance))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnUpdate))
-                .addContainerGap(263, Short.MAX_VALUE))
+                .addContainerGap(204, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        setEditmode();
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        String routingNumber= txtRoutingNumber.getText();
+        String accountNumber= txtAccountNumber.getText();
+        String bankName = txtBankName.getText();
+        
+        if (routingNumber.isBlank() || bankName.isBlank() || accountNumber.isBlank()){
+            JOptionPane.showMessageDialog(null, "All fields are mandatory.");
+            return;
+        }
+        
+        account.setAccountNumber(accountNumber);
+        account.setRoutingNumber(routingNumber);
+        account.setBankName(bankName);
+        
+        JOptionPane.showMessageDialog(null, "Acccount successfully updated.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        
+        setViewmode();
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        
+        //this will reach the previous panel and trigger an update
+        Component[] panelStack = userProcessContainer.getComponents();
+        JPanel lastPanel=(JPanel) panelStack[panelStack.length-1];
+        ManageAccountsJPanel manageAccountJPanel = (ManageAccountsJPanel) lastPanel;
+        manageAccountJPanel.populateTable();
+        
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -123,11 +197,46 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel lblAccountNumber;
+    private javax.swing.JLabel lblBalance;
     private javax.swing.JLabel lblBankName;
     private javax.swing.JLabel lblRoutingNumber;
-    private javax.swing.JLabel tlbTitle;
+    private javax.swing.JLabel lblView;
     private javax.swing.JTextField txtAccountNumber;
+    private javax.swing.JTextField txtBalance;
     private javax.swing.JTextField txtBankName;
     private javax.swing.JTextField txtRoutingNumber;
     // End of variables declaration//GEN-END:variables
+
+    private void refreshTextFields() {
+        txtRoutingNumber.setText(account.getRoutingNumber());
+        txtAccountNumber.setText(account.getAccountNumber());
+        txtBankName.setText(account.getBankName());
+        int balance = account.getBalance();
+        txtBalance.setText(Integer.toString(balance));
+
+        
+        
+    }
+
+    private void setViewmode() {
+        txtRoutingNumber.setEnabled(false);
+        txtAccountNumber.setEnabled(false);
+        txtBankName.setEnabled(false);
+        txtBalance.setEnabled(false);
+        
+        btnSave.setEnabled(false);
+        btnUpdate.setEnabled(true);
+        
+    }
+    
+    private void setEditmode(){
+    
+        txtRoutingNumber.setEnabled(true);
+        txtAccountNumber.setEnabled(true);
+        txtBankName.setEnabled(true);
+        txtBalance.setEnabled(false);
+        
+        btnSave.setEnabled(true);
+        btnUpdate.setEnabled(false);
+    }
 }

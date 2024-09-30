@@ -4,6 +4,7 @@
  */
 package ui.AccountManager;
 
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Account;
@@ -166,7 +167,7 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
         
         Account a = accountDirectory.addAccount();
         
-        a.setRountingNumber(routingNumber);
+        a.setRoutingNumber(routingNumber);
         a.setAccountNumber(accountNumber);
         a.setBankName(bankName);
         a.setBalance(balance);
@@ -182,6 +183,9 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
         
     }//GEN-LAST:event_btnBackActionPerformed
 

@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui;
+import java.awt.CardLayout;
 import model.Account;
 import model.AccountDirectory;
+import ui.AccountManager.AccountMngWorkAreaJPanel;
 
 /**
  *
@@ -44,6 +46,11 @@ public class MainJFrame extends javax.swing.JFrame {
         splitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         btnAccountMng.setText("Open Account Manager Work Area");
+        btnAccountMng.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAccountMngActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout topJPanelLayout = new javax.swing.GroupLayout(topJPanel);
         topJPanel.setLayout(topJPanelLayout);
@@ -80,6 +87,15 @@ public class MainJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAccountMngActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccountMngActionPerformed
+        // TODO add your handling code here:
+        AccountMngWorkAreaJPanel panel =new AccountMngWorkAreaJPanel(userProcessContainer, accountDirectory);
+        userProcessContainer.add("AccountMngWorkAreaJPanel", panel);
+        
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnAccountMngActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,13 +143,13 @@ public class MainJFrame extends javax.swing.JFrame {
         
         Account newAccount = accountDirectory.addAccount();
         newAccount.setAccountNumber("4444444444");
-        newAccount.setRountingNumber("0011223344");
+        newAccount.setRoutingNumber("0011223344");
         newAccount.setBankName("Bank of America");
         newAccount.setBalance(200);
         
         Account anotherNewAccount = accountDirectory.addAccount();
         anotherNewAccount.setAccountNumber("5555555555");
-        anotherNewAccount.setRountingNumber("..77112234");
+        anotherNewAccount.setRoutingNumber("..77112234");
         anotherNewAccount.setBankName("Santander Bank");
         anotherNewAccount.setBalance(1200);
         

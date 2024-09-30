@@ -11,7 +11,7 @@ package model;
 public class Account {
     
     private String bankName;
-    private String rountingNumber;
+    private String routingNumber;
     private String accountNumber;
     private int balance;
 
@@ -23,12 +23,12 @@ public class Account {
         this.bankName = bankName;
     }
 
-    public String getRountingNumber() {
-        return rountingNumber;
+    public String getRoutingNumber() {
+        return routingNumber;
     }
 
-    public void setRountingNumber(String rountingNumber) {
-        this.rountingNumber = rountingNumber;
+    public void setRoutingNumber(String routingNumber) {
+        this.routingNumber = routingNumber;
     }
 
     public String getAccountNumber() {
