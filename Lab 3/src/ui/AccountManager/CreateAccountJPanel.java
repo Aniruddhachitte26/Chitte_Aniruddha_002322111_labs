@@ -4,17 +4,27 @@
  */
 package ui.AccountManager;
 
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import model.Account;
+import model.AccountDirectory;
+
 /**
  *
  * @author Aniruddha
  */
 public class CreateAccountJPanel extends javax.swing.JPanel {
+    
+    JPanel userProcessContainer;
+    AccountDirectory accountDirectory;
 
     /**
      * Creates new form CreateAccountJPanel
      */
-    public CreateAccountJPanel() {
+    public CreateAccountJPanel(JPanel container, AccountDirectory directory) {
         initComponents();
+        userProcessContainer = container;
+        accountDirectory = directory;
     }
 
     /**
@@ -39,6 +49,11 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
         lblTitle = new javax.swing.JLabel();
 
         btnBack.setText("<<<<Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         lblRoutingNumber.setText("Routing Number");
 
@@ -49,6 +64,11 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
         lblBalance.setText("Balance");
 
         btnCreate.setText("Create Account");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateActionPerformed(evt);
+            }
+        });
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTitle.setText("Create Account");
@@ -124,6 +144,46 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
                 .addContainerGap(225, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        // TODO add your handling code here:
+        int balance;
+        String routingNumber = txtRoutingNumber.getText();
+        String accountNumber = txtAccountNumber.getText();
+        String bankName = txtBankName.getText();
+        
+        if (routingNumber.isBlank() ||bankName.isBlank() || accountNumber.isBlank()){
+            JOptionPane.showMessageDialog(this, "All fields are mandatory", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try{
+            balance = Integer.parseInt(txtBalance.getText());
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Please check the message input", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Account a = accountDirectory.addAccount();
+        
+        a.setRountingNumber(routingNumber);
+        a.setAccountNumber(accountNumber);
+        a.setBankName(bankName);
+        a.setBalance(balance);
+        
+        
+        JOptionPane.showMessageDialog(this, "Account Successfully Created", "Success", JOptionPane.INFORMATION_MESSAGE);
+        
+        txtRoutingNumber.setText("");
+        txtAccountNumber.setText("");
+        txtBankName.setText("");
+        txtBalance.setText("");
+    }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
