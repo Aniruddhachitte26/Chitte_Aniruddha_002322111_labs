@@ -14,7 +14,7 @@ import model.AccountDirectory;
 
 /**
  *
- * @author Microsoft
+ * @author Aniruddha
  */
 public class ManageAccountsJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;

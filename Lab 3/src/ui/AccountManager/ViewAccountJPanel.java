@@ -13,7 +13,7 @@ import model.AccountDirectory;
 
 /**
  *
- * @author Microsoft
+ * @author Aniruddha
  */
 public class ViewAccountJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
