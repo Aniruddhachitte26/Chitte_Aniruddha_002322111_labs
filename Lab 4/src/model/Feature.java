@@ -7,7 +7,7 @@ package model;
 
 /**
  *
- * @author archil
+ * @author Aniruddha
  */
 public class Feature {
 
@@ -38,6 +38,7 @@ public class Feature {
     public void setValue(Object value) {
         this.value = value;
     }
+
     @Override
     public String toString() {
         return name;

@@ -13,7 +13,7 @@ import ui.LoginScreen;
 
 /**
  *
- * @author Rushabh
+ * @author Aniruddha
  */
 public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
 
@@ -28,11 +28,12 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
 
         initComponents();
         this.mainWorkArea = mainWorkArea;
-        
+
         this.supplier = supplier;
-        if (supplier != null) lblWelcome.setText("Welcome to Lab 4, "+supplier.getSupplyName());
-        
-//      masterOrderCatalog = moc;
+        if (supplier != null) {
+            lblWelcome.setText("Welcome to Lab 4, " + supplier.getSupplyName());
+        }
+
     }
 
     /**
@@ -171,7 +172,7 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnSupplierProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplierProfileActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btnSupplierProfileActionPerformed
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed

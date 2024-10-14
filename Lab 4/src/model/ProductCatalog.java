@@ -4,12 +4,11 @@
  */
 package model;
 
-
 import java.util.ArrayList;
 
 /**
  *
- * @author Rushabh
+ * @author Aniruddha
  */
 public class ProductCatalog {
 

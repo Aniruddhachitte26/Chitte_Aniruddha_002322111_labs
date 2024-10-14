@@ -12,13 +12,13 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Zerel
+ * @author Aniruddha
  */
 public class ViewSupplier extends javax.swing.JPanel {
 
     JPanel workArea;
     Supplier supplier;
-    
+
     /**
      * Creates new form ViewSupplier
      */
@@ -26,19 +26,19 @@ public class ViewSupplier extends javax.swing.JPanel {
         initComponents();
         this.workArea = workArea;
         this.supplier = supplier;
-        
+
         lblSupplierName.setText(supplier.getSupplyName());
-        
+
         refreshTable();
-        
+
     }
-    
+
     private void refreshTable() {
-        
-        DefaultTableModel model = (DefaultTableModel)productCatalog.getModel();
+
+        DefaultTableModel model = (DefaultTableModel) productCatalog.getModel();
         model.setRowCount(0);
-        
-        for(Product p : supplier.getProductCatalog().getProductCatalog()) {
+
+        for (Product p : supplier.getProductCatalog().getProductCatalog()) {
             Object row[] = new Object[3];
             row[0] = p;
             row[1] = p.getId();
@@ -125,7 +125,7 @@ public class ViewSupplier extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         workArea.remove(this);
-        CardLayout layout = (CardLayout)workArea.getLayout();
+        CardLayout layout = (CardLayout) workArea.getLayout();
         layout.previous(workArea);
     }//GEN-LAST:event_btnBackActionPerformed
 

@@ -2,17 +2,16 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model;
 
 import javax.swing.ImageIcon;
 
 /**
  *
- * @author Rushabh
+ * @author Aniruddha
  */
 public class Supplier {
-    
+
     private String supplyName;
     private ProductCatalog productCatalog;
     private ImageIcon logoImage;
@@ -24,7 +23,7 @@ public class Supplier {
     public void setLogoImage(ImageIcon logoImage) {
         this.logoImage = logoImage;
     }
-    
+
     public Supplier() {
         productCatalog = new ProductCatalog();
     }
@@ -40,11 +39,10 @@ public class Supplier {
     public ProductCatalog getProductCatalog() {
         return productCatalog;
     }
-    
-    
+
     @Override
     public String toString() {
         return supplyName;
     }
-    
+
 }
