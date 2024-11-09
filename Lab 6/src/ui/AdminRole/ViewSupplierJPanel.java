@@ -25,30 +25,19 @@ public class ViewSupplierJPanel extends javax.swing.JPanel {
     }
 
     public void refreshTable(){
-        int rowCount = productCatalog.getRowCount();
-        DefaultTableModel model = (DefaultTableModel) productCatalog.getModel();
-        for(int i=rowCount - 1;i>=0;i--){
-            model.removeRow(i);
-        }
-        for(Product p: supplier.getProductCatalog().getProductcatalog()){
-            Object row[] = new Object[3];
-            row[0] = p;
-            row[1] = p.getModelNumber();
-            row[2] = p.getPrice();
-            model.addRow(row);
-        }
+
 
     
-//    DefaultTableModel model = (DefaultTableModel) productCatalog.getModel();
-//    model.setRowCount(0); 
-//    
-//    for (Product p : supplier.getProductCatalog().getProductcatalog()) {
-//        Object[] row = new Object[3];
-//        row[0] = p;
-//        row[1] = p.getModelNumber();
-//        row[2] = p.getPrice(); 
-//        model.addRow(row);
-//    }
+    DefaultTableModel model = (DefaultTableModel) productCatalog.getModel();
+    model.setRowCount(0); 
+    
+    for (Product p : supplier.getProductCatalog().getProductcatalog()) {
+        Object[] row = new Object[3];
+        row[0] = p;
+        row[1] = p.getModelNumber();
+        row[2] = p.getPrice(); 
+        model.addRow(row);
+    }
 }
     
     @SuppressWarnings("unchecked")
