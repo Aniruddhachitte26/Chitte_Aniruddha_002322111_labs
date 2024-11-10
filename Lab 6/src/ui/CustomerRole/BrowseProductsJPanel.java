@@ -79,7 +79,7 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
         btnRemoveOrderItem = new javax.swing.JButton();
         btnCheckOut = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(240, 240, 240));
+        setBackground(new java.awt.Color(204, 204, 255));
         setPreferredSize(new java.awt.Dimension(650, 600));
 
         lblTitle.setBackground(new java.awt.Color(0, 0, 0));

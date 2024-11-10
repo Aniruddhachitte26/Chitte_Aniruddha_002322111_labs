@@ -39,6 +39,7 @@ public class SearchResultJPanel extends javax.swing.JPanel {
         lblAvail = new javax.swing.JLabel();
         txtAvail = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 204, 204));
         setPreferredSize(new java.awt.Dimension(650, 600));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N

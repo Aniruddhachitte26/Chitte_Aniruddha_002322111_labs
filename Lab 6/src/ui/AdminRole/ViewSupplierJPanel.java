@@ -49,6 +49,8 @@ public class ViewSupplierJPanel extends javax.swing.JPanel {
         productCatalog = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 204, 255));
+
         lblSupplierName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblSupplierName.setText("<Supplier Name>");
 

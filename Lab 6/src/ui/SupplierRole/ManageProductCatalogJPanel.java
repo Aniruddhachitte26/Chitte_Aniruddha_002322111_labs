@@ -55,6 +55,7 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 204));
         setPreferredSize(new java.awt.Dimension(650, 600));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N

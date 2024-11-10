@@ -27,7 +27,7 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
         btnUpdateProfile = new javax.swing.JButton();
         btnUpdateStaff = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(240, 240, 240));
+        setBackground(new java.awt.Color(255, 153, 255));
         setPreferredSize(new java.awt.Dimension(650, 600));
 
         lblTitle.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N

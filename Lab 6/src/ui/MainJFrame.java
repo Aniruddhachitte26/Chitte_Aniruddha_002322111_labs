@@ -58,7 +58,7 @@ public class MainJFrame extends javax.swing.JFrame {
         splitPane.setDividerLocation(150);
         splitPane.setOpaque(false);
 
-        controlPanel.setBackground(new java.awt.Color(240, 240, 240));
+        controlPanel.setBackground(new java.awt.Color(204, 255, 255));
 
         btnAdmin.setText("Administrator");
         btnAdmin.addActionListener(new java.awt.event.ActionListener() {

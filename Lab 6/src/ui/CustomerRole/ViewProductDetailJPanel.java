@@ -52,6 +52,7 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         txtAvail = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(204, 255, 204));
         setPreferredSize(new java.awt.Dimension(650, 600));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N

@@ -30,7 +30,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageSuppliers = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(240, 240, 240));
+        setBackground(new java.awt.Color(204, 204, 255));
         setPreferredSize(new java.awt.Dimension(650, 600));
 
         btnManageSuppliers.setText("Manage Suppliers >>");

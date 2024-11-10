@@ -32,6 +32,7 @@ public class LoginSupplierJPanel extends javax.swing.JPanel {
         cmbSupplier = new javax.swing.JComboBox();
         btnFind = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 255, 255));
         setPreferredSize(new java.awt.Dimension(650, 600));
 
         lblTitle.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N

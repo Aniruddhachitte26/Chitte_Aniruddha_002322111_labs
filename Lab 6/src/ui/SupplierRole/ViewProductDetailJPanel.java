@@ -41,6 +41,7 @@ public class ViewProductDetailJPanel extends javax.swing.JPanel {
         lblProductAvail = new javax.swing.JLabel();
         txtAvail = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 255, 153));
         setPreferredSize(new java.awt.Dimension(650, 600));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N

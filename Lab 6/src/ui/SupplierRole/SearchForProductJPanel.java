@@ -30,6 +30,7 @@ public class SearchForProductJPanel extends javax.swing.JPanel {
         txtId = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 153));
         setPreferredSize(new java.awt.Dimension(650, 600));
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N

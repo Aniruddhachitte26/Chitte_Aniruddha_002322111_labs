@@ -47,7 +47,7 @@ public class ManageSuppliersJPanel extends javax.swing.JPanel {
         btnAddSupplier = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(240, 240, 240));
+        setBackground(new java.awt.Color(204, 204, 255));
 
         supplierTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
