@@ -171,10 +171,7 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
 
-        CreateNewProductJPanel cnpjp = new CreateNewProductJPanel(userProcessContainer, supplier);
-        userProcessContainer.add("CreateNewProductJPanel", cnpjp);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
